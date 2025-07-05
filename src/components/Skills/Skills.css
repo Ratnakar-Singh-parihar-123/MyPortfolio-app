@@ -1,0 +1,268 @@
+/* ========== Theme Variables ========== */
+body[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1e293b;
+  --card: #f9fafb;
+  --accent: #6366f1;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --border: rgba(99, 102, 241, 0.25);
+  --glass: rgba(255, 255, 255, 0.97);
+  --highlight: rgba(99, 102, 241, 0.07);
+}
+
+body[data-theme="dark"] {
+  --bg: #000000; /* Pure black background */
+  --text: #f1f5f9;
+  --card: #0a0a0a; /* Near black cards */
+  --accent: #60a5fa;
+  --shadow: rgba(0, 0, 0, 0.7); /* Darker shadow */
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.04); /* Soft glass effect */
+  --highlight: rgba(255, 255, 255, 0.06); /* Light highlight */
+}
+
+/* ========== Skills Section ========== */
+.skills-section {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 5rem 1.5rem;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+/* ========== Headings ========== */
+.skills-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.skills-subtitle,
+.projects-hint {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* ========== Category Buttons ========== */
+.category-buttons,
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.category-button,
+.tab {
+  background: var(--card);
+  color: var(--accent);
+  padding: 0.65rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 14px var(--shadow);
+  transition: all 0.35s ease;
+  backdrop-filter: blur(4px);
+}
+
+.category-button:hover,
+.tab:hover,
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 10px 25px rgba(96, 165, 250, 0.5);
+}
+
+/* ========== Modal ========== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: var(--glass);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 2.4rem 2rem;
+  width: 92%;
+  max-width: 1000px;
+  box-shadow: 0 25px 60px var(--shadow);
+  animation: slideUp 0.35s ease;
+  position: relative;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+body[data-theme="light"] .modal-content {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Close Button ========== */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+
+/* ========== Modal Title ========== */
+.modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ========== Skills Grid ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ========== Skill Card ========== */
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.6rem 1rem;
+  box-shadow: 0 6px 18px var(--shadow);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(96, 165, 250, 0.3);
+  background-color: var(--highlight);
+}
+
+.skill-icon {
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.2);
+}
+
+.skill-name {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+}
+
+.skill-desc {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .skills-title {
+    font-size: 2.3rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .category-button,
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+
+  .skill-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-section {
+    padding: 4rem 1rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .skill-desc {
+    font-size: 0.85rem;
+  }
+
+  .skills-title {
+    font-size: 2rem;
+  }
+
+  .close-btn {
+    font-size: 1.4rem;
+  }
+}

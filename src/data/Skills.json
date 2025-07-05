@@ -1,0 +1,116 @@
+{
+  "MERN Stack": [
+    {
+      "name": "MongoDB",
+      "icon": "SiMongodb",
+      "description": "NoSQL Database used for flexible, scalable storage"
+    },
+    {
+      "name": "Express.js",
+      "icon": "SiExpress",
+      "description": "Lightweight Node.js web application framework"
+    },
+    {
+      "name": "React.js",
+      "icon": "FaReact",
+      "description": "Frontend library for building interactive UIs"
+    },
+    {
+      "name": "Node.js",
+      "icon": "FaNode",
+      "description": "JavaScript runtime for server-side development"
+    }
+  ],
+
+  "Frontend Technologies": [
+    {
+      "name": "HTML5",
+      "icon": "FaHtml5",
+      "description": "Markup language for structuring web content"
+    },
+    {
+      "name": "CSS3",
+      "icon": "FaCss3Alt",
+      "description": "Stylesheet language for designing web pages"
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "SiTailwindcss",
+      "description": "Utility-first CSS framework for rapid UI building"
+    },
+    {
+      "name": "Bootstrap",
+      "icon": "FaBootstrap",
+      "description": "Popular CSS framework for responsive design"
+    }
+  ],
+
+  "Data Structures & Algorithms": [
+    {
+      "name": "Problem Solving",
+      "icon": "TbBinaryTree2",
+      "description": "Proficient in solving DSA problems using Java/C++"
+    },
+    {
+      "name": "Sorting & Searching",
+      "icon": "FaSortAlphaDown",
+      "description": "Efficient algorithms like QuickSort, Binary Search"
+    },
+    {
+      "name": "Graph & Trees",
+      "icon": "TbTopologyRing2",
+      "description": "DFS, BFS, DP, Tree Traversals"
+    }
+  ],
+
+  "Core CS Concepts": [
+    {
+      "name": "OOPs",
+      "icon": "FaObjectGroup",
+      "description": "Object-oriented principles in Java"
+    },
+    {
+      "name": "DBMS",
+      "icon": "FaDatabase",
+      "description": "Relational DB concepts, SQL, Normalization"
+    },
+    {
+      "name": "MySQL",
+      "icon": "GrMysql",
+      "description": "Relational database system with advanced queries"
+    },
+    {
+      "name": "Operating System",
+      "icon": "FaMicrochip",
+      "description": "Process, memory & scheduling management"
+    }
+  ],
+
+  "Tools & Platforms": [
+    {
+      "name": "VS Code",
+      "icon": "SiVisualstudiocode",
+      "description": "Preferred IDE with extensions for productivity"
+    },
+    {
+      "name": "Git & GitHub",
+      "icon": "FaGithub",
+      "description": "Version control and collaboration"
+    },
+    {
+      "name": "Postman",
+      "icon": "SiPostman",
+      "description": "Testing APIs with ease"
+    },
+    {
+      "name": "MongoDB Atlas",
+      "icon": "SiMongodb",
+      "description": "Cloud database hosting for MongoDB applications"
+    },
+    {
+      "name": "Figma",
+      "icon": "FaFigma",
+      "description": "Design and prototyping platform"
+    }
+  ]
+}

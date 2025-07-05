@@ -1,0 +1,270 @@
+:root {
+  --light-bg: rgba(255, 255, 255, 0.6);
+  --dark-bg: rgba(15, 15, 25, 0.8);
+  --accent: #ff6b6b;
+  --light-text: #111;
+  --dark-text: #f1f5f9;
+  --hover-color: #ff6b6b;
+
+  /* Added fallback variables for mobile styles */
+  --nav-bg: #ffffff;
+  --text-color: #111;
+}
+
+/* ================== Theme Setup ================== */
+body.light-theme {
+  background-color: #ffffff;
+  color: var(--light-text);
+}
+
+body.dark-theme {
+  background-color: #0e0e15;
+  color: var(--dark-text);
+}
+
+/* ================== Navbar Base ================== */
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: top 0.4s ease;
+}
+
+body.light-theme .nav {
+  background: var(--light-bg);
+}
+
+body.dark-theme .nav {
+  background: var(--dark-bg);
+}
+
+.hide-navbar {
+  top: -100px;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* ================== Desktop Nav Menu ================== */
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  padding-bottom: 4px;
+}
+
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+/* ================== Icons & Theme Button ================== */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.side-menu-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.side-menu-button:hover {
+  transform: scale(1.1);
+}
+
+/* ================== Side Menu (Mobile Only) ================== */
+.side-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 200px;
+  height: 100vh;
+  padding: 5rem 2rem 2rem;
+  flex-direction: column;
+  background: var(--dark-bg);
+  backdrop-filter: blur(12px);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+  transition: right 0.4s ease;
+  z-index: 1200;
+}
+
+body.light-theme .side-menu {
+  background: var(--light-bg);
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+/* Side Menu Content */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin-bottom: 1.2rem;
+}
+
+.side-menu li a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.side-menu li a:hover {
+  color: var(--hover-color);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Theme Button Inside Side Menu */
+.side-theme-toggle {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.side-theme-toggle button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.side-theme-toggle button:hover {
+  transform: rotate(20deg);
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .side-menu {
+    display: flex;
+  }
+
+  /* Style the side-menu-button properly */
+  .side-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--light-text);
+    border: 2px solid var(--light-text);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1500;
+    /* ensure it's above everything */
+    margin-right: 10px;
+    /* keeps it away from the edge */
+  }
+
+  body.dark-theme .side-menu-button {
+    color: var(--dark-text);
+    border-color: var(--dark-text);
+  }
+
+  .side-menu-button:hover {
+    background-color: var(--hover-color);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* Icon inside the button */
+  .side-menu-button .menu-icon {
+    font-size: 1.4rem;
+  }
+
+  .nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 25px; /* prevent right edge overflow */
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+
+
+
+}
