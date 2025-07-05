@@ -15,7 +15,7 @@
 .contact-section {
   padding: 4rem 1rem;
   background: var(--bg-color);
-  color:#e05252;
+  color: #e05252;
   transition: background 0.3s ease;
   backdrop-filter: blur(4px);
   box-sizing: border-box;
@@ -75,6 +75,7 @@
 .contact-form input,
 .contact-form textarea {
   width: 100%;
+  max-width: 100%;
   padding: 1rem 1.2rem;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -142,7 +143,6 @@
   transform: scale(0.97);
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
 }
-
 
 /* ========== Info Box ========== */
 .contact-info {
@@ -275,11 +275,29 @@
   }
 }
 
+@media (max-width: 400px) {
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .contact-form {
+    padding: 1.2rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* ========== Map ========== */
 .map-container {
   margin-top: 15px;
   width: 100%;
   max-width: 600px;
-  aspect-ratio: 16 / 9; /* Maintains proper ratio */
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -294,5 +312,3 @@
   display: block;
   border-radius: 8px;
 }
-
-
