@@ -8,6 +8,8 @@ import { FaCertificate } from 'react-icons/fa';
 
 import img1 from '../../assets/certificatesProblemSolvingBasic.png';
 import img2 from '../../assets/certificatesProblemSolvingIntermediate.png';
+import img3 from '../../assets/AWS.png';
+
 
 const Certificates = () => {
   const [activeCert, setActiveCert] = useState(null);
@@ -22,6 +24,11 @@ const Certificates = () => {
       title: 'Problem Solving (Intermediate)',
       thumbnail: img2,
       image: img2,
+    },
+    {
+      title: 'AWS',
+      thumbnail: img3,
+      image: img3,
     },
     // ✅ Add more certificate objects as needed
   ];
