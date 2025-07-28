@@ -1,0 +1,342 @@
+:root {
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #121722;
+  --color-text-light: #222222;
+  --color-text-dark: #e4e9f0;
+  --color-primary-light: #6e94ff;
+  --color-primary-dark: #90dffe;
+  --color-hover-light: #5383ff;
+  --color-hover-dark: #59a0ff;
+
+  --transition-fast: 0.3s ease;
+  --nav-height: 56px;
+  --shadow-color-light: rgba(110, 148, 255, 0.3);
+  --shadow-color-dark: rgba(144, 223, 254, 0.3);
+}
+
+html.dark-mode {
+  --bg: var(--color-bg-dark);
+  --text: var(--color-text-dark);
+  --primary: var(--color-primary-dark);
+  --hover: var(--color-hover-dark);
+  --shadow-color: var(--shadow-color-dark);
+}
+
+html:not(.dark-mode) {
+  --bg: var(--color-bg-light);
+  --text: var(--color-text-light);
+  --primary: var(--color-primary-light);
+  --hover: var(--color-hover-light);
+  --shadow-color: var(--shadow-color-light);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar container and base */
+
+.navbar {
+  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(100, 115, 140, 0.1);
+  z-index: 1000;
+  padding: 0 1rem;
+  user-select: none;
+  backdrop-filter: saturate(180%) blur(10px); /* subtle glass effect */
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0 2px 15px var(--shadow-color);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--primary);
+  text-decoration: none;
+  user-select: text;
+  transition: color var(--transition-fast);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.navbar-logo:hover,
+.navbar-logo:focus-visible {
+  color: var(--hover);
+  outline: none;
+  text-shadow: 0 0 5px var(--hover);
+}
+
+/* Desktop Navigation Links */
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition-fast);
+  position: relative;
+  padding: 0.4rem 0;
+  outline-offset: 3px;
+}
+
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: -4px;
+  left: 0;
+  background: var(--primary);
+  transition: width 0.35s ease;
+  border-radius: 2px;
+}
+
+.navbar-links li a:hover,
+.navbar-links li a:focus-visible {
+  color: var(--primary);
+  outline: none;
+}
+
+.navbar-links li a:hover::after,
+.navbar-links li a:focus-visible::after {
+  width: 100%;
+}
+
+/* Dark Mode Toggle Button */
+
+.darkmode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 0 10px;
+  margin-right: 1.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+  border-radius: 6px;
+  user-select: none;
+}
+
+.darkmode-toggle:hover,
+.darkmode-toggle:focus-visible {
+  color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 8px var(--primary);
+}
+
+/* Hamburger Button */
+
+.hamburger {
+  position: relative;
+  width: 26px;
+  height: 22px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  user-select: none;
+  z-index: 11000; /* above side menu */
+  transition: transform 0.3s ease;
+}
+
+.hamburger:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.hamburger .bar {
+  height: 3px;
+  background-color: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+.hamburger .bar:nth-child(1) {
+  width: 100%;
+}
+
+.hamburger .bar:nth-child(2) {
+  width: 70%;
+}
+
+.hamburger .bar:nth-child(3) {
+  width: 40%;
+}
+
+.hamburger.open {
+  transform: rotate(90deg);
+}
+
+.hamburger.open .bar:nth-child(1) {
+  transform-origin: center center;
+  transform: rotate(45deg);
+  width: 100%;
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform-origin: center center;
+  transform: rotate(-45deg);
+  width: 100%;
+}
+
+/* Responsive: Hide desktop links, show hamburger */
+
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Side menu overlay */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg);
+  backdrop-filter: blur(8px);
+  transform: translateX(-110%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  overflow-y: auto;
+  user-select: none;
+  display: flex;
+  justify-content: flex-start;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+/* Side menu content */
+
+.side-menu-content {
+  width: 300px;
+  max-width: 80vw;
+  height: 100%;
+  background-color: var(--bg);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+  padding: 3rem 1.5rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  outline: none;
+  user-select: text;
+  font-weight: 600;
+}
+
+/* Side menu navigation links */
+
+.side-menu-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.side-menu-content ul li a {
+  display: block;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.side-menu-content ul li a:hover,
+.side-menu-content ul li a:focus-visible {
+  background-color: var(--primary);
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* Scrollbar styling for side menu */
+
+.side-menu-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.side-menu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-menu-content::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.side-menu-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hover);
+}
+
+/* Accessible focus outlines */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Additional subtle hover/active styles */
+
+.navbar-links li a:active,
+.side-menu-content ul li a:active {
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
