@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import LoadingScreen from "./pages/LoadingScreen/LoadingScreen";
 import ThreeBackground from "./ThreeBackground";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -16,11 +15,6 @@ export default function App() {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  if (loading) {
-    return <LoadingScreen onFinish={() => setLoading(false)} />;
-  }
-
   return (
     <>
       <ThreeBackground />

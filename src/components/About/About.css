@@ -1,3 +1,4 @@
+/* Smooth glassmorphic container */
 .about-section {
   background: rgba(28, 32, 43, 0.75);
   backdrop-filter: saturate(200%) blur(16px);
@@ -7,19 +8,18 @@
   box-shadow: 0 14px 38px rgba(110, 148, 255, 0.22);
   color: #e6ecff;
   max-width: 900px;
-  margin: 4rem auto 6rem;
+  margin-inline: auto;
+  margin-block: 4rem 6rem;
   padding: 3.7rem 2.8rem 4.5rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
   user-select: text;
   overflow-wrap: break-word;
   will-change: transform, opacity;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-
-  /* Add gentle fade-in on load */
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.8s forwards ease-out 0.3s;
+  animation: fadeInUp 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards 0.3s;
+  transition: all 0.35s ease-in-out;
 }
 
 @keyframes fadeInUp {
@@ -29,94 +29,89 @@
   }
 }
 
+/* Flex container */
 .about-container {
   display: flex;
   flex-direction: column;
   gap: 2.3rem;
-  /* Center container content */
   align-items: center;
   text-align: center;
 }
 
+/* Animated title */
 .about-title {
   font-size: clamp(2rem, 6vw, 2.9rem);
   font-weight: 800;
   margin: 0;
   background: linear-gradient(90deg, #76b9ff 20%, #38a3d1 50%, #739eff 80%);
+  background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
   letter-spacing: 0.06em;
-  user-select: none;
   text-shadow: 0 2px 10px rgba(56, 130, 235, 0.45);
   animation: shimmer 6s linear infinite;
-  transition: text-shadow 0.3s ease;
   cursor: default;
+  transition: text-shadow 0.3s ease-in-out;
 }
 
-.about-title:hover,
-.about-title:focus-visible {
-  /* Slightly brighten text shadow on hover/focus */
+.about-title:is(:hover, :focus-visible) {
   text-shadow: 0 2px 15px rgba(56, 160, 235, 0.8);
   outline: none;
 }
 
-
 @keyframes shimmer {
-  0% {
+  from {
     background-position: -250%;
   }
-  100% {
+  to {
     background-position: 250%;
   }
 }
 
-
+/* Intro paragraph */
 .about-intro {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.7;
   max-width: 720px;
-  margin: 0 auto;
+  margin-inline: auto;
   color: #c9d6ff;
   font-weight: 500;
   letter-spacing: 0.015em;
-  user-select: text;
   word-break: break-word;
+  user-select: text;
   transition: color 0.3s ease;
 }
 
-.about-intro:hover,
-.about-intro:focus-visible {
+.about-intro:is(:hover, :focus-visible) {
   color: #a3b9ff;
   outline: none;
 }
 
+/* Highlight spans */
 .highlight {
-  background: linear-gradient(45deg, #67a8ff, #32a4fd);
-  padding: 0 0.3rem;
+  background: radial-gradient(circle at top left, #67a8ff, #32a4fd);
+  padding: 0 0.35rem;
   border-radius: 6px;
   box-shadow: 0 5px 12px rgba(50, 140, 255, 0.25);
   color: #e9f3ff;
   font-weight: 600;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
 }
 
-.highlight:hover,
-.highlight:focus-visible {
+.highlight:is(:hover, :focus-visible) {
   box-shadow: 0 6px 18px rgba(50, 160, 255, 0.45);
-  outline: none;
   transform: scale(1.05);
+  outline: none;
   user-select: text;
 }
 
-/* Skills list */
-
+/* Skills grid */
 .about-skills {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
+  margin-inline: auto;
   max-width: 720px;
   display: flex;
   flex-wrap: wrap;
@@ -134,32 +129,26 @@
   font-size: 1.05rem;
   color: #e3e9ff;
   box-shadow:
-    inset 0 2px 5px rgba(255 255 255 / 0.15),
-    0 1px 10px rgba(46 72 230 / 0.35);
+    inset 0 2px 5px rgba(255, 255, 255, 0.15),
+    0 1px 10px rgba(46, 72, 230, 0.35);
   cursor: default;
-  user-select: none;
-  transition:
-    background-color 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.2s ease;
-  will-change: transform, box-shadow, background-color;
+  transition: all 0.3s ease-in-out;
+  will-change: transform, background-color;
 }
 
-.skill-item:hover,
-.skill-item:focus-visible {
+.skill-item:is(:hover, :focus-visible) {
   background-color: rgba(62, 152, 255, 0.55);
   box-shadow:
-    inset 0 8px 12px rgba(255 255 255 / 0.3),
+    inset 0 8px 12px rgba(255, 255, 255, 0.3),
     0 10px 28px rgba(62, 140, 255, 0.7);
-  outline: none;
   transform: scale(1.12);
+  outline: none;
 }
 
-/* Responsive adjustments */
-
+/* Responsive tweaks */
 @media (max-width: 900px) {
   .about-section {
-    margin: 3rem 1.5rem 4.5rem;
+    margin-block: 3rem 4.5rem;
     padding: 3rem 2rem 4rem;
   }
 
@@ -184,7 +173,7 @@
 
 @media (max-width: 600px) {
   .about-section {
-    margin: 2.5rem 1.2rem 3.5rem;
+    margin-block: 2.5rem 3.5rem;
     padding: 2.5rem 1.2rem 3rem;
   }
 
@@ -207,30 +196,16 @@
   }
 }
 
-/* Accessibility: respects prefers-reduced-motion */
-
+/* Accessibility: prefers-reduced-motion (now global-safe) */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0s !important;
+    animation: none !important;
+    transition: none !important;
   }
 
-  .skill-item:hover,
-  .skill-item:focus-visible,
-  .highlight:hover,
-  .highlight:focus-visible {
+  .highlight:is(:hover, :focus-visible),
+  .skill-item:is(:hover, :focus-visible) {
     transform: none !important;
     box-shadow: none !important;
-    outline: none !important;
-  }
-
-  .about-title {
-    animation: none !important;
-  }
-
-  .about-section {
-    animation: none !important;
-    transform: none !important;
   }
 }
